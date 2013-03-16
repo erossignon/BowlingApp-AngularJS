@@ -1,0 +1,16 @@
+{
+  "name": "BowlingApp",
+  "version": "0.0.0",
+  "description": "My Bowling TDD Kata",
+  "main": "Bowling.js",
+
+  "repository": "",
+  "author": "Etienne Rossignon",
+  "license": "MIT",
+  "devDependencies": {
+    "testacular": "~0.6"
+  },
+  "scripts": {
+     "test": "./node_modules/.bin/testacular start testacular-e2e.conf.js --single-run --browsers PhantomJS"
+  }
+}

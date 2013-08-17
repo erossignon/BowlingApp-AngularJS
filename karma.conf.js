@@ -23,8 +23,14 @@ module.exports = function(config) {
 
     // test results reporter to use
     // possible values: 'dots', 'progress', 'junit'
-    reporters: ['progress' , "junit" , "coverage"],
+    reporters: [
+       // 'progress' 
+       'spec', "junit" , "coverage"
+    ],
 
+    junitReporter: {
+        outputFile: 'test_reports/test_results.xml'
+    },
 
     // web server port
     port: 9876,
@@ -54,7 +60,7 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['Firefox','Chrome'],
+    browsers: ['Firefox','Chrome','PhantomJS'],
 
 
     // If browser does not capture in given timeout [ms], kill it

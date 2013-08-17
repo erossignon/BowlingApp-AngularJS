@@ -13,7 +13,7 @@ module.exports = function(config) {
 
       // list of files / patterns to load in the browser
       files: [
-        'Bowling.html',
+        //  'Bowling.html',
         'Bowling.js',
         '*Functional_Test.js'
       ],
@@ -30,7 +30,7 @@ module.exports = function(config) {
 
       junitReporter: {
          // will be resolved to basePath (in the s ame way as files/exclude patterns)
-         outputFile: 'test_reports/test-results.xml'
+         outputFile: 'test_reports/test-results-e2e.xml'
       },
 
       // web server port
@@ -43,7 +43,7 @@ module.exports = function(config) {
     
       // level of logging
       // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || coLOG_INFO || LOG_DEBUG
-      logLevel: config.LOG_DEBUG,
+      logLevel: config.LOG_INFO,
 
 
       // enable / disable watching file and executing tests whenever any file changes
@@ -89,7 +89,7 @@ module.exports = function(config) {
       coverageReporter: {
         // cf. http://gotwarlost.github.com/istanbul/public/apidocs/
         type : 'html',
-        dir : 'coverage2/'
+        dir : 'test_reports/coverage-e2e/'
       }
    })
 };

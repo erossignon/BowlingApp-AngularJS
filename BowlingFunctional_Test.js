@@ -1,15 +1,16 @@
 describe("testing BowlingGame HTML page",function(){
 	 
 	beforeEach(function() {
-		//xx browser().reload();
-     	browser().navigateTo('../Bowling.html');
+		
+		// browser().reload();
+     	browser().navigateTo('Bowling.html');
      	// add player 1
      
      	input('Name').enter('Player1');
      	element('#add_user_btn',"Add Player Button").click();
 
      	input('Name').enter('Player2');
-     	element('#add_user_btn',"Add Player Button").click();
+     	element('#add_user_btn',"Add Player Button").click();	
 
     });
 	it("should update score when user plays",function(){

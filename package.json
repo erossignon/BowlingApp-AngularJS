@@ -3,14 +3,26 @@
   "version": "0.0.0",
   "description": "My Bowling TDD Kata",
   "main": "Bowling.js",
-
   "repository": "",
   "author": "Etienne Rossignon",
   "license": "MIT",
   "devDependencies": {
-    "testacular": "~0.6"
+    "karma": "~0.10.1",
+    "karma-script-launcher": "~0.1.0",
+    "karma-chrome-launcher": "~0.1.0",
+    "karma-firefox-launcher": "~0.1.0",
+    "karma-html2js-preprocessor": "~0.1.0",
+    "karma-jasmine": "~0.1.0",
+    "karma-requirejs": "~0.1.0",
+    "karma-coffee-preprocessor": "~0.1.0",
+    "karma-phantomjs-launcher": "~0.1.0",
+    "karma-ng-scenario": "~0.1.0",
+    "karma-coverage": "~0.1.0",
+    "mocha": "~1.12.0",
+    "karma-mocha": "~0.1.0",
+    "karma-junit-reporter": "~0.1.0"
   },
   "scripts": {
-     "test": "./node_modules/.bin/testacular start testacular-e2e.conf.js --single-run --browsers PhantomJS"
+    "test": "./node_modules/.bin/karma start karma-e2e.conf.js --single-run --browsers PhantomJS"
   }
 }

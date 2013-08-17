@@ -268,7 +268,7 @@ describe("Players",function(){
 			expect(player.gameIsOver()).toBe(true);
 			expect(player.score()).toBe(58);
 		});				
-
+ 
 		it("should have the correct result for WORE",function(){
 		
 			var player  = new Player("WORE");

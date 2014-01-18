@@ -26,7 +26,11 @@ module.exports = function(config) {
 
       // test results reporter to use
       // possible values: 'dots', 'progress', 'junit'
-      reporters: ['progress' , 'dots','junit' ,'coverage'],
+      reporters: [
+        // 'progress' ,
+        'spec',
+        // 'dots',
+        'junit' ],
 
       junitReporter: {
          // will be resolved to basePath (in the s ame way as files/exclude patterns)
@@ -65,7 +69,7 @@ module.exports = function(config) {
       // - Safari (only Mac)
       // - PhantomJS
       // - IE (only Windows)
-      browsers: ['Firefox'],
+      browsers: ['Firefox','Chrome','PhantomJS'],
 
 
       // If browser does not capture in given timeout [ms], kill it
@@ -74,23 +78,10 @@ module.exports = function(config) {
   
       // Continuous Integration mode
       // if true, it capture browsers, run tests and exit
-      singleRun: false,
+      singleRun: false
 
-      preprocessors: {
-        //  '**/Bowling.js': 'coverage'
-      },
-      //Code Coverage options. report type available:
-      //- html (default)
-      //- lcov (lcov and html)
-      //- lcovonly
-      //- text (standard output)
-      //- text-summary (standard output)
-      //- cobertura (xml format supported by Jenkins)
-      coverageReporter: {
-        // cf. http://gotwarlost.github.com/istanbul/public/apidocs/
-        type : 'html',
-        dir : 'test_reports/coverage-e2e/'
-      }
+      //note: code coverage cannot work with e2e testing
+
    })
 };
 

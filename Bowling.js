@@ -51,7 +51,7 @@ Player.prototype.gameIsOver = function() {
 
 	if (this.round<=19) { return false;}
 
-	var f = this.currentFrame();
+	//xx var f = this.currentFrame();
 	if (this.round === 20	) {
 		if (this.rolls[this.round-2]==10) {
 			return false;
@@ -89,7 +89,6 @@ Player.prototype.roll  = function (pin) {
 
 	this.round++;
 };
-
 
 Player.prototype.standingPin  = function () {
 
@@ -130,11 +129,11 @@ Player.prototype.frameText = function (f,i) {
 	if (this.frameIsStrike(f) && f<9) {
 		if (i==0) { return "" }
 		return "X";
-	};
+	}
 	if (this.frameIsSpare(f)) {
 		if (i==0) { return this.rolls[f*2] }
 		return "/";
-	};
+	}
 	return this.rolls[f*2+i];
 };
 
@@ -205,7 +204,7 @@ var Game = function() {
 	this.reset();
 };
 
-Game.prototype.roll = function (pin) {
+Game.prototype.roll = function(pin) {
 
 	this.currentPlayer().roll(pin);
 
@@ -217,6 +216,17 @@ Game.prototype.roll = function (pin) {
 		}		
 	}
 };
+
+function randint(maxValue) {
+    return Math.floor(Math.random() * maxValue + 1)
+}
+
+Game.prototype.roll_rnd= function() {
+
+    nbPin = randint(this.currentPlayer().standingPin());
+    this.roll(nbPin)
+};
+
 
 Game.prototype.reset = function()	{
 	this.round =0;
@@ -261,9 +271,26 @@ Game.prototype.findPlayer = function (name) {
 
 var BowlingCtrl = function ($scope) {
 
-	$scope.pin = 0
+	$scope.pin = 0;
 	$scope.game = new Game();
 	$scope.isActivePlayer = function(player) {
 		return player.name == this.game.currentPlayer().name;
 	}
 };
+
+
+// http://www.matteoagosti.com/blog/2013/02/24/writing-javascript-modules-for-both-browser-and-node/
+//
+(function() {
+  var _exports = {};
+  _exports.Game = Game;
+  _exports.BowlingCtrl = BowlingCtrl;
+  _exports.Player      = Player;
+
+  if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports = _exports;
+    console.log(" EEEE");
+  } else {
+    // window.Validator = Validator;
+  }
+})();

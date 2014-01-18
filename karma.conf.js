@@ -13,7 +13,35 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'Bowling.js',
-      'test/Bowling_test.js'
+      'test/Bowling_test.js',
+
+     // These are not watched because they're not expected to change.
+     // These are not included because they are not JavaScript files and Karma inserts 
+     // these as <script> tags.
+     // These are served however, as the adapter will load them into the captured browsers.
+     // The cucumber-html.css file can be copied and customized, simply change the path.
+     // The adapter will load any file ending with '.css' into the captured browsers.
+     {pattern: 'node_modules/karma-cucumberjs/vendor/cucumber-html.css', watched: false, included: false, served: true},
+     {pattern: 'test/cucumber/app.template', watched: false, included: false, served: true},
+
+
+    // These are not included because they're text feature files and shouldn't go in script tags.
+    // These are watched because feature files will change during dev and you want Karma to run
+    // tests when these change.
+    // These are served by Karma so the adapter can load their contents when its time to test.
+    {pattern: 'test/cucumber/features/**/*.feature', watched: true, included: false, served: true},
+
+
+    // The adapter is not watched as it will not change.
+    // The adapter is included so it gets added as a <script> to the page.
+    // The adpater is served so the <script> tag will work when its added to the captured browsers.
+    {pattern: 'node_modules/karma-cucumberjs/lib/adapter.js', watched: false, included: true, served: true},
+
+
+    // The step definitions should be loaded last so the adapter can load the global functions 
+    // needed by the step defs.
+    // The step defs are watched and served so Karma runs when they change.
+    {pattern: 'test/cucumber/features/step_definitions/**/*.js', watched: true, included: true, served: true}
     ],
 
     // list of files to exclude
@@ -25,7 +53,8 @@ module.exports = function(config) {
     // possible values: 'dots', 'progress', 'junit'
     reporters: [
        // 'progress' 
-       'spec', "junit" , "coverage"
+       'spec', 
+       "junit" , "coverage"
     ],
 
     junitReporter: {
@@ -73,7 +102,7 @@ module.exports = function(config) {
 
 
     preprocessors: {
-      '**/Bowling.js': 'coverage'
+      'Bowling.js': 'coverage'
     },
     //Code Coverage options. report type available:
     //- html (default)

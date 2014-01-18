@@ -2,79 +2,85 @@
     <html ng-app>
     <head>
        <meta charset="utf-8" />
+        <!--    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+        <style type="text/css">
+          td {  width:60px;text-align:center;}
+          .active-player {
+            color: red;
+          }
+          .error {
+            color: red;
+          }
+        </style>
     </head>
-    <!--    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular.min.js"></script>
-    <style type="text/css">
-      td {  width:60px;text-align:center;} 
-      .active-player {
-        color: red;
-      }
-      .error {
-        color: red;
-      }
-    </style>
     <body>
-    <script src="Bowling.js"></script>
-    <div   ng-controller="BowlingCtrl" ng-init=''>
+      <script src="Bowling.js"></script>
+      <div   ng-controller="BowlingCtrl" ng-init=''>
     
-      <p>game status :  {{ game.status() }}</p>      
-          
-
-      <!-- Section to define and add users -->
-  
-          <div id="adduser" ng-show="game.status()=='new'|| game.status()=='ready'">
-             <h3> adding player to the party</h3>
-             <form name="myForm">
-                   <label>Name:</label>
-                  
-                  <input required name='input' type="text" ng-model="Name" ng-minlength="1" ng-pattern="/^\w+$/"  placeholder="Enter a name here"> 
-                  <span class="error" ng-show="myForm.input.$error.required">Required!</span>
-                  <span class="error" ng-show="myForm.input.$error.pattern">Single word only!</span>
-
-                  <button id="add_user_btn" ng-show="myForm.input.$valid"  ng-click="game.addPlayer(Name)">Add</button>
-              </form>      
-
-              <hr>            
-          </div>
-
-    <!-- Section to define and add users -->
+            <p>game status :  {{ game.status() }}</p>
 
 
-    <div ng-show="game.status()!='new'">
-    	<h1> This is Frame {{ game.currentPlayer().currentFrame() +1 }}  
-         - {{ game.currentPlayer().currentChance()+1}}  / 
-           {{ game.currentPlayer().numberOfChanceInCurrentFrame()}}</h1>
-      <p> Hello {{game.currentPlayer().name}}! , this is your turn</h1>
-      <p> {{ game.currentPlayer().standingPin()}} pins are standing up</p>
-      <p> Enter the number of pin you thrown <input  ng-model="pin" type="number" min="0" max="{{game.currentPlayer().standingPin()}}"></input>
-     	<span class="error" ng-show="myForm.list.$error.required">
-          Required!</span>
-      <span class="error" ng-show="myForm.list.$error.number">Not valid number!</span>
-      <button id="play-btn" ng-click="game.roll(pin);alert('Blah');">Go</button>
-    <div>
+            <!-- Section to define and add users -->
+            <div id="adduser" ng-show="game.status()=='new'|| game.status()=='ready'">
+                <h3> adding player to the party</h3>
+                <form name="myForm">
+                    <label>Name:</label>
 
-  	<table border=1 width=100%>
-    	<tr ng-repeat="player in game.players">
-      		<td><div ng-class="'' || isActivePlayer(player) &&  'active-player'">{{player.name}}</div></td>
-      		<td>
-      			<table border=1 width=100%>
-              <tr>
-                <td width=100 style='width:100px;' colspan="{{player.numberOfChanceInFrame(i)}}" ng-repeat="i in [0,1,2,3,4,5,6,7,8,9]">{{i+1}}</td>
-              </tr>
-              <tr>
-                <td style='width:100px;' ng-repeat="s in player.scoreString()"> {{ s }}</td>
-              </tr>
-     		<tr> <td  colspan="{{player.numberOfChanceInFrame(i)}}" ng-repeat="i in [0,1,2,3,4,5,6,7,8,9]">     
-               <div > {{player.frameScore(i)}}</div>
-              </td>
-  	      		</tr>
-	      		</table>
-	      	</td>
-          <td><div id="{{ 'score' + player.name}}">{{player.score()}}</div></td>
-    	</tr>
-  	</table>
-    <button ng-click="game.reset()">Reset</button>
-    </div>
+                    <input required name='input' type="text" ng-model="Name" ng-minlength="1" ng-pattern="/^\w+$/"  placeholder="Enter a name here">
+                    <span class="error" ng-show="myForm.input.$error.required">Required!</span>
+                    <span class="error" ng-show="myForm.input.$error.pattern">Single word only!</span>
+
+                    <button id="add_user_btn" ng-show="myForm.input.$valid"  ng-click="game.addPlayer(Name)">Add</button>
+                </form>
+              <hr>
+            </div>
+
+            <!-- Section to define and add users -->
+            <div ng-show="game.status()!='new'">
+              <h1> This is Frame {{ game.currentPlayer().currentFrame() +1 }}
+                 - {{ game.currentPlayer().currentChance()+1}}  /
+                   {{ game.currentPlayer().numberOfChanceInCurrentFrame()}}
+              </h1>
+              <p> Hello {{game.currentPlayer().name}}! , this is your turn</p>
+              <p> {{ game.currentPlayer().standingPin()}} pins are standing up</p>
+              <p> Enter the number of pin you thrown
+                  <input  ng-model="pin" type="number" min="0" max="{{game.currentPlayer().standingPin()}}"/>
+                  <span class="error" ng-show="myForm.list.$error.required">
+                  Required!</span>
+                  <span class="error" ng-show="myForm.list.$error.number">Not valid number!</span>
+                  <button id="play-btn" ng-click="game.roll(pin);">Go</button>
+                  <button id="play-btn-rnd" ng-click="game.roll_rnd();">Random</button>
+            </div>
+
+            <table border=1 width=100%>
+                <tr ng-repeat="player in game.players">
+                    <td>
+                        <div ng-class="'' || isActivePlayer(player) &&  'active-player'">{{player.name}}</div>
+                    </td>
+                    <td>
+                        <table border=1 width=100%>
+                            <tr>
+                                <td width=100 style='width:100px;' colspan="{{player.numberOfChanceInFrame(i)}}" ng-repeat="i in [0,1,2,3,4,5,6,7,8,9] track by $index">{{i+1}}</td>
+                            </tr>
+                            <tr>
+                                <td style='width:100px;' ng-repeat="s in player.scoreString() track by $index"> {{ s }}</td>
+                            </tr>
+                            <tr>
+                                <td  colspan="{{player.numberOfChanceInFrame(i)}}" ng-repeat="i in [0,1,2,3,4,5,6,7,8,9] track by $index">
+                                    <div > {{player.frameScore(i)}}</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <div id="{{ 'score' + player.name}}">{{player.score()}}</div>
+                    </td>
+                </tr>
+            </table>
+
+            <button ng-click="game.reset()">Reset</button>
+
+      </div>
     </body>
     </html> 

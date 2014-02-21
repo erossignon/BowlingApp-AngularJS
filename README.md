@@ -16,3 +16,7 @@ To run the End To End tests
 
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/erossignon/bowlingapp-angularjs/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+

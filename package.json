@@ -7,27 +7,29 @@
   "author": "Etienne Rossignon",
   "license": "MIT",
   "devDependencies": {
-    "karma": "~0.10.1",
-    "karma-script-launcher": "~0.1.0",
-    "karma-chrome-launcher": "~0.1.0",
-    "karma-firefox-launcher": "~0.1.0",
+    "karma": "~0.12.24",
+    "karma-chrome-launcher": "~0.1.5",
+    "karma-coffee-preprocessor": "~0.2.1",
+    "karma-coverage": "~0.2.6",
+    "karma-cucumberjs": "0.0.2",
+    "karma-firefox-launcher": "~0.1.3",
     "karma-html2js-preprocessor": "~0.1.0",
-    "karma-jasmine": "~0.1.0",
-    "karma-requirejs": "~0.1.0",
-    "karma-coffee-preprocessor": "~0.1.0",
-    "karma-phantomjs-launcher": "~0.1.0",
+    "karma-ie-launcher": "^0.1.5",
+    "karma-jasmine": "~0.1.5",
+    "karma-junit-reporter": "~0.2.2",
+    "karma-mocha": "~0.1.9",
     "karma-ng-scenario": "~0.1.0",
-    "karma-coverage": "~0.1.0",
-    "mocha": "~1.12.0",
-    "karma-mocha": "~0.1.0",
-    "karma-junit-reporter": "~0.1.0",
-    "karma-spec-reporter": "0.0.4",
-    "karma-cucumberjs": "0.0.1"
+    "karma-phantomjs-launcher": "~0.1.4",
+    "karma-requirejs": "~0.2.2",
+    "karma-script-launcher": "~0.1.0",
+    "karma-spec-reporter": "0.0.13",
+    "mocha": "~1.21.5"
   },
   "scripts": {
-    "test": "./node_modules/.bin/karma start karma-e2e.conf.js --single-run --browsers PhantomJS"
+    "test": "mocha test/mocha -R Spec && ./node_modules/.bin/karma start karma-e2e.conf.js --single-run --browsers PhantomJS"
   },
   "dependencies": {
-    "expect.js": "~0.2.0"
+    "expect.js": "~0.3.1",
+    "karma-cli": "0.0.4"
   }
 }

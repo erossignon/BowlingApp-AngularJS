@@ -1,3 +1,6 @@
+// jasmine test
+// this test requires a BowlingCtrl
+
 describe('Bowling controllers', function() {
  
   describe('BowlingCtrl', function(){

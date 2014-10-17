@@ -47,7 +47,7 @@ module.exports = function(config) {
     
       // level of logging
       // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || coLOG_INFO || LOG_DEBUG
-      logLevel: config.LOG_INFO,
+      logLevel: config.LOG_DEBUG,
 
 
       // enable / disable watching file and executing tests whenever any file changes
@@ -55,8 +55,8 @@ module.exports = function(config) {
 
 
 
-      // urlRoot = '/';
-      proxies: { '/': 'http://localhost:3000/'},
+      urlRoot: '_karma_path_',
+      // proxies: { '/': 'http://localhost:3000/'},
       //// cli runner port
       // runnerPort = 9100;
 

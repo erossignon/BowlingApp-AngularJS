@@ -46,8 +46,8 @@ module.exports = function(config) {
 
     
       // level of logging
-      // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || coLOG_INFO || LOG_DEBUG
-      logLevel: config.LOG_DEBUG,
+      // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || LOG_DEBUG
+      logLevel: config.LOG_INFO,
 
 
       // enable / disable watching file and executing tests whenever any file changes

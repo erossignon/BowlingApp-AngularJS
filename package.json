@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "description": "My Bowling TDD Kata",
   "main": "Bowling.js",
-  "repository": "",
+  "repository": "https://github.com/erossignon/BowlingApp-AngularJS.git",
   "author": "Etienne Rossignon",
   "license": "MIT",
   "devDependencies": {
+    "cucumber": "latest",
     "karma": "~0.12.24",
     "karma-chrome-launcher": "~0.1.5",
     "karma-coffee-preprocessor": "~0.2.1",

@@ -13,7 +13,7 @@ module.exports = function(config) {
 
       // list of files / patterns to load in the browser
       files: [
-        //  'Bowling.html',
+        'Bowling.html',
         'Bowling.js',
         '*Functional_Test.js'
       ],
@@ -55,10 +55,10 @@ module.exports = function(config) {
 
 
 
-      urlRoot: '_karma_path_',
-      // proxies: { '/': 'http://localhost:3000/'},
+      urlRoot: '_karma_',
+      proxies: { '/_karma_': 'http://localhost:3000/'},
       //// cli runner port
-      // runnerPort = 9100;
+      // runnerPort: 9100,
 
 
       // Start these browsers, currently available:
@@ -69,7 +69,8 @@ module.exports = function(config) {
       // - Safari (only Mac)
       // - PhantomJS
       // - IE (only Windows)
-      browsers: ['Firefox','Chrome','PhantomJS'],
+      // browsers: ['Firefox','Chrome','PhantomJS'],
+      browsers: ['Chrome'],
 
 
       // If browser does not capture in given timeout [ms], kill it
@@ -78,7 +79,7 @@ module.exports = function(config) {
   
       // Continuous Integration mode
       // if true, it capture browsers, run tests and exit
-      singleRun: false
+      singleRun: true
 
       //note: code coverage cannot work with e2e testing
 
